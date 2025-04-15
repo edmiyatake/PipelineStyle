@@ -16,13 +16,11 @@ This version uses a modular, function-based pipeline structure, where each trans
 
 ## Constraints
 --------
-- No long jumps.
-- Complexity of control flow tamed by dividing the large problem into
-smaller units using procedural abstraction. Procedures are pieces of functionality that may take input, but that don’t necessarily produce output
-that is relevant for the problem.
-- Procedures may share state in the form of global variables.
-- The larger problem is solved by applying the procedures, one after the
-other, that change, or add to, the shared state.
+- Larger problem is decomposed using functional abstraction. Functions
+take input and produce output.
+- No shared state between functions.
+- The larger problem is solved by composing functions one after the other,
+in a pipeline, as a faithful reproduction of mathematical function composition f ◦ g.
 
 ## Project Folder Structure
 ------------------------
@@ -47,10 +45,10 @@ a,an,the,in,of,to,for,with,is,was,and,by,on,from,at
    (replace with actual path)
 
 3. Compile the program:
-   javac Four.java
+   javac Six.java
 
 4. Run the program:
-   java Four test.txt stopwords.txt
+   java Six test.txt stopwords.txt
 
 The program will output the top 25 most frequent words in the file, excluding stopwords.
 
