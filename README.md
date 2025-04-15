@@ -4,21 +4,31 @@
 --------
 The `Six` program is a Pipeline-style Java application that:
 
-- Reads a text file containing the content to analyze.
-- Loads a list of stopwords.
-- Tracks the frequency of each non-stop word through .
-- Displays the top 25 most frequent words from the input text file.
+Reads a text file to analyze.
+- Normalizes the characters by removing punctuation and converting to lowercase.
+- Splits the cleaned text into individual words.
+- Removes stop words (common, uninformative words).
+- Counts the frequency of each remaining word.
+- Sorts the words by frequency in descending order.
+- Prints the top 25 most frequent words.e.
 
-This program was developed under the following constraints:
-- No named abstractions (no custom classes or high-level libraries)
-- No use of built-in data structures like ArrayList or HashMap
-- Only standard arrays and manual resizing
+This version uses a modular, function-based pipeline structure, where each transformation step is defined in a separate method and passed through sequentially, resembling Unix-style command chaining.
+
+## Constraints
+--------
+- No long jumps.
+- Complexity of control flow tamed by dividing the large problem into
+smaller units using procedural abstraction. Procedures are pieces of functionality that may take input, but that don’t necessarily produce output
+that is relevant for the problem.
+- Procedures may share state in the form of global variables.
+- The larger problem is solved by applying the procedures, one after the
+other, that change, or add to, the shared state.
 
 ## Project Folder Structure
 ------------------------
 Place the following files in the same folder:
 
-- Four.java           // The Java source code file
+- Six.java           // The Java source code file
 - test.txt            // Input text files to be analyzed
 - stopwords.txt       // File containing comma-separated stop words
 
@@ -59,7 +69,10 @@ time: 63
 
 ...
 
-## Constraints of the Monolithic Style
+## NOTES
 -----
-- No named abstractions, my helper functions are technically abstractions but they do not introduce new classes or modular decomposition
-- This program is useful for analyzing text frequency under constrained environments without using libraries (except for file input)
+- This implementation uses Java's built-in libraries (`java.util.*`, `java.nio.file.*`) for list, map, and file operations.
+- The program recursively prints the word frequencies using a helper method.
+- The `stopwords.txt` file must be in the same directory as the program and should contain stop words separated by commas.
+- The program automatically ignores all single-letter words (a-z) as part of the stop words list.
+- Clean modular structure makes this version easier to extend or refactor.
